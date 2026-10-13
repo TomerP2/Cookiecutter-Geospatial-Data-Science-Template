@@ -3,7 +3,7 @@
 Shared analytical working guides and a small Pixi + Jupyter + `src/` project
 template, inspired by
 [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science)
-and Tomer's GIS / remote sensing workflow preferences. Template version: **0.1.0**.
+and my personal GIS / remote sensing workflow preferences. Template version: **0.1.0**.
 
 This is an independent template for the standard `cookiecutter` command. CCDS v2
 uses its own `ccds` generator; do not use `ccds` to generate this template.
