@@ -1,0 +1,2 @@
+# Keep local guide backups portable across platforms.
+guides/*.md text eol=lf

@@ -1,2 +1,8 @@
+.venv/
+.pixi/
 __pycache__/
 *.py[cod]
+.checks/
+.cookiecutter-cache/
+.cookiecutter-replay/
+.pytest_cache/

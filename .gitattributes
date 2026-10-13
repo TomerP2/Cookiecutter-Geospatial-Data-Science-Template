@@ -1,3 +1,5 @@
+# Keep shared guidance portable across Windows/Linux/macOS checkouts.
 * text=auto
 *.md text eol=lf
 *.py text eol=lf
+**/guides/*.md text eol=lf

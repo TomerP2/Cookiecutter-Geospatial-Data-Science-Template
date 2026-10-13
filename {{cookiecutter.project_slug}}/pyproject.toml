@@ -1,0 +1,39 @@
+[project]
+name = {{ cookiecutter.package_name | tojson }}
+version = "0.1.0"
+description = {{ cookiecutter.description | tojson }}
+authors = [{ name = {{ cookiecutter.author_name | tojson }} }]
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/{{ cookiecutter.package_name }}"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = [{{ cookiecutter.platform | tojson }}]
+
+[tool.pixi.dependencies]
+python = "3.12.*"
+jupyterlab = ">=4,<5"
+ipykernel = ">=6,<8"
+nbconvert = ">=7,<8"
+pandas = ">=2.2,<3"
+numpy = ">=2,<3"
+pytest = ">=8,<10"
+
+[tool.pixi.pypi-dependencies]
+{{ cookiecutter.package_name }} = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+notebook = "jupyter lab notebooks"
+check-notebook = "jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=120 --output-dir=runs/notebooks notebooks/0.01-{{ cookiecutter.author_initials }}-getting-started.ipynb"
+test = "python -m pytest"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --import-mode=importlib"

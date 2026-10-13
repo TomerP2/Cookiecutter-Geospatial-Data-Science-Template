@@ -1,0 +1,49 @@
+# Local environments, caches, build products
+.pixi/
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.local.toml
+
+# Data and generated artifacts: keep retrieval notes and intentional tiny fixtures.
+data/**/*
+!data/**/
+!data/**/README.md
+!data/**/.gitkeep
+models/
+runs/**/*
+!runs/**/
+!runs/**/.gitkeep
+!runs/**/README.md
+
+# Authored LaTeX reports are tracked; build products are generated.
+reports/**/build/
+reports/**/*.aux
+reports/**/*.bbl
+reports/**/*.bcf
+reports/**/*.blg
+reports/**/*.fdb_latexmk
+reports/**/*.fls
+reports/**/*.out
+reports/**/*.run.xml
+reports/**/*.synctex.gz
+reports/**/*.toc
+*.log
+.DS_Store
+Thumbs.db
+qgis/**/*.qgz~
+qgis/**/*.qgs~
+qgis/**/*.qgs.bak
+
+# pixi.lock, source notebooks, guides, and QGIS definitions/projects should be versioned.
