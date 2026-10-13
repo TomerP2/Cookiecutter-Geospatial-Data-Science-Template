@@ -109,7 +109,7 @@ using the backup; it reflects the template used to generate this project.
 
 Hosted guide directory: {% if cookiecutter.guides_url %}{{ cookiecutter.guides_url }}{% else %}not configured yet.{% endif %}
 
-After the template repository is hosted, set its raw GitHub guide directory URL in
-AGENTS.md and here. Reading remote guidance does not update local files. Keep
+To change the guide source, update its directory URL in AGENTS.md and here.
+Reading remote guidance does not update local files. Keep
 project-specific rules in AGENTS.md; user instructions and local overrides take
 precedence over shared guides.

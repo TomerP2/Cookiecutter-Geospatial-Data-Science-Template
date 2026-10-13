@@ -26,7 +26,9 @@ class TemplateTests(unittest.TestCase):
                                  (project / 'guides' / guide.name).read_text(encoding='utf-8').strip())
             self.assertFalse((project / 'scripts/sync_guides.py').exists())
             self.assertFalse((project / 'guides/source.json').exists())
-            self.assertIn('not configured yet', (project / 'AGENTS.md').read_text())
+            default_url = json.loads((TEMPLATE / 'cookiecutter.json').read_text())['guides_url']
+            for name in ('AGENTS.md', 'README.md'):
+                self.assertIn(default_url, (project / name).read_text())
             self.assertFalse((project / '.git').exists())
 
     def test_hosted_guide_url_is_configurable(self):

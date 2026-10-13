@@ -12,5 +12,5 @@
     "osx-64"
   ],
   "__template_version": "0.1.0",
-  "guides_url": ""
+  "guides_url": "https://raw.githubusercontent.com/TomerP2/Cookiecutter-Geospatial-Data-Science-Template/main/templates/shared-guides"
 }

@@ -14,19 +14,19 @@ Install [Cookiecutter](https://cookiecutter.readthedocs.io/) and
 [Pixi](https://pixi.prefix.dev/). From the directory that should contain the new project:
 
 ```powershell
-cookiecutter "C:/Users/tomer/OneDrive/Home/Projects/data_science_template"
+cookiecutter https://github.com/TomerP2/Cookiecutter-Geospatial-Data-Science-Template
 ```
 
-The path above is this template's current location; replace it when moving the template.
 With Pixi installed, an alternative that supplies Cookiecutter is:
 
 ```powershell
-pixi exec --spec cookiecutter cookiecutter "C:/Users/tomer/OneDrive/Home/Projects/data_science_template"
+pixi exec --spec cookiecutter cookiecutter https://github.com/TomerP2/Cookiecutter-Geospatial-Data-Science-Template
 ```
 
 Then follow the generated README: run `pixi install`, followed by `pixi run notebook`.
-Generation only writes files. It does not install environments, download data, initialize
-Git, or create commits. Python hooks validate safe folder/package names.
+Cookiecutter downloads the template from GitHub and writes the new project. It does
+not install environments, download analytical data, initialize the project's Git
+repository, or create commits. Python hooks validate safe folder/package names.
 
 Prompts cover the project title, folder name, importable package name, description,
 author, notebook initials, target platform, and the optional hosted guide URL. Python 3.12 is the starting environment;
@@ -67,7 +67,8 @@ file has not been modified.
 
 ## Maintenance and verification
 
-Install Cookiecutter in your development Python environment, then run:
+Clone the repository for template maintenance, install Cookiecutter in your
+development Python environment, then run from the checkout:
 
 ```text
 python -m unittest discover -s tests -v
@@ -77,7 +78,7 @@ The tests generate temporary projects, check rendered metadata/notebooks and gui
 links, and reject unsafe names. For a full runtime check, generate a fresh project:
 
 ```text
-cookiecutter . --no-input --output-dir .checks project_slug=smoke_project package_name=smoke_package
+cookiecutter https://github.com/TomerP2/Cookiecutter-Geospatial-Data-Science-Template --no-input --output-dir .checks project_slug=smoke_project package_name=smoke_package
 cd .checks/smoke_project
 pixi install
 pixi run --locked test
@@ -131,17 +132,15 @@ repository. Edit the files in `templates/shared-guides/`; no snapshot refresh or
 sync command is required. When adding a guide, add its one-line include and route
 it from the generated AGENTS.md.
 
-After publishing this repository, set `guides_url` in `cookiecutter.json` to the
-raw GitHub URL of the shared guide directory, using the actual owner, repository,
-and branch. For example (replace the uppercase placeholders):
+The default `guides_url` in `cookiecutter.json` points to the shared guides on this
+repository's `main` branch:
 
 ```text
-https://raw.githubusercontent.com/OWNER/REPOSITORY/BRANCH/templates/shared-guides
+https://raw.githubusercontent.com/TomerP2/Cookiecutter-Geospatial-Data-Science-Template/main/templates/shared-guides
 ```
 
-The generation prompt can override that URL. Until hosting is configured its
-default is empty, so generated projects use their local backup. Nothing has been
-published and no GitHub URL has been assumed.
+The generation prompt can override that URL. Set it to an empty string to use only
+the local backup.
 
 At task start, agents read the hosted `core.md` and relevant topic guides first.
 If the URL is unconfigured or required hosted guidance cannot be read, they use the
@@ -157,5 +156,5 @@ projects are unaffected; update their hosted URL explicitly when needed rather t
 regenerating over them.
 
 Run `python -m unittest discover -s tests -v` to verify generation, local backup
-contents and links, and hosted-guide configuration. Hosted reads can only be checked
-once the repository is published.
+contents and links, and hosted-guide configuration. These tests generate from the
+local checkout; use `cookiecutter .` for runtime checks of unpublished template edits.
