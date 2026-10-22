@@ -1,3 +1,5 @@
  - Tell the agents to use tqdm progress bars where progress might take a while.
  - Look into dashboarding guide / advice for agents. Maybe plotly dash?
  - Look into if streamlit is useful
+ - Add guide for latex stuff.
+ - Bug: agents can't seem to access hosted guides.
