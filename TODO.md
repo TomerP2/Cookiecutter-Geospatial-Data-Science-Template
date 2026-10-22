@@ -3,3 +3,4 @@
  - Look into if streamlit is useful
  - Add guide for latex stuff.
  - Bug: agents can't seem to access hosted guides.
+ - Add boolean VISUALIZE flag in notebooks, turns visualizations / plotting on / off.
